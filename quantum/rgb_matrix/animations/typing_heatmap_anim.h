@@ -57,7 +57,7 @@ bool TYPING_HEATMAP(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
     if (params->init) {
-        rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_hsv_all(NEW_HSV(0, 0, 0));
         memset(g_rgb_frame_buffer, 0, sizeof g_rgb_frame_buffer);
     }
 
@@ -83,8 +83,8 @@ bool TYPING_HEATMAP(effect_params_t* params) {
                 if (!HAS_ANY_FLAGS(g_led_config.flags[g_led_config.matrix_co[row][col]], params->flags)) continue;
 
                 HSV hsv = {170 - qsub8(val, 85), rgb_matrix_config.hsv.s, scale8((qadd8(170, val) - 170) * 3, rgb_matrix_config.hsv.v)};
-                RGB rgb = rgb_matrix_hsv_to_rgb(hsv);
-                rgb_matrix_set_color(g_led_config.matrix_co[row][col], rgb.r, rgb.g, rgb.b);
+
+                rgb_matrix_set_hsv(g_led_config.matrix_co[row][col], hsv);
 
                 if (decrease_heatmap_values) {
                     g_rgb_frame_buffer[row][col] = qsub8(val, 1);

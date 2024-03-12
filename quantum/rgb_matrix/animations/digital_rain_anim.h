@@ -10,16 +10,18 @@ RGB_MATRIX_EFFECT(DIGITAL_RAIN)
 bool DIGITAL_RAIN(effect_params_t* params) {
     // algorithm ported from https://github.com/tremby/Kaleidoscope-LEDEffect-DigitalRain
     const uint8_t drop_ticks           = 28;
-    const uint8_t pure_green_intensity = (((uint16_t)rgb_matrix_config.hsv.v) * 3) >> 2;
-    const uint8_t max_brightness_boost = (((uint16_t)rgb_matrix_config.hsv.v) * 3) >> 2;
     const uint8_t max_intensity        = rgb_matrix_config.hsv.v;
     const uint8_t decay_ticks          = 0xff / max_intensity;
 
     static uint8_t drop  = 0;
     static uint8_t decay = 0;
 
+    HSV green_hsv;
+    green_hsv.h = 85;
+    green_hsv.s = 255;
+
     if (params->init) {
-        rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_hsv_all(NEW_HSV(0, 0, 0));
         memset(g_rgb_frame_buffer, 0, sizeof(g_rgb_frame_buffer));
         drop = 0;
     }
@@ -43,13 +45,8 @@ bool DIGITAL_RAIN(effect_params_t* params) {
 
             // TODO: multiple leds are supported mapped to the same row/column
             if (led_count > 0) {
-                if (g_rgb_frame_buffer[row][col] > pure_green_intensity) {
-                    const uint8_t boost = (uint8_t)((uint16_t)max_brightness_boost * (g_rgb_frame_buffer[row][col] - pure_green_intensity) / (max_intensity - pure_green_intensity));
-                    rgb_matrix_set_color(led[0], boost, max_intensity, boost);
-                } else {
-                    const uint8_t green = (uint8_t)((uint16_t)max_intensity * g_rgb_frame_buffer[row][col] / pure_green_intensity);
-                    rgb_matrix_set_color(led[0], 0, green, 0);
-                }
+                green_hsv.v = g_rgb_frame_buffer[row][col];
+                rgb_matrix_set_hsv(led[0], green_hsv);
             }
         }
     }

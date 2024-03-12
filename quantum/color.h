@@ -72,6 +72,8 @@
 #define HSV_YELLOW       43, 255, 255
 #define HSV_OFF         HSV_BLACK
 
+#define NEW_HSV(hue, saturation, value) ((struct HSV) {hue, saturation, value})
+
 // clang-format on
 
 #define WS2812_BYTE_ORDER_RGB 0

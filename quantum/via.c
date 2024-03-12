@@ -206,11 +206,14 @@ bool process_record_via(uint16_t keycode, keyrecord_t *record) {
 
 // This is the default handler for "extra" custom values, i.e. keyboard-specific custom values
 // that are not handled by via_custom_value_command().
-__attribute__((weak)) void via_custom_value_command_kb(uint8_t *data, uint8_t length) {
-    // data = [ command_id, channel_id, value_id, value_data ]
-    uint8_t *command_id = &(data[0]);
-    // Return the unhandled state
-    *command_id = id_unhandled;
+__attribute__((weak)) bool via_custom_value_command_kb(uint8_t *data, uint8_t length) {
+    return via_custom_value_command_user(data, length);
+}
+
+// This is the default handler for "extra" custom values, i.e. keyboard-specific custom values
+// that are not handled by via_custom_value_command().
+__attribute__((weak)) bool via_custom_value_command_user(uint8_t *data, uint8_t length) {
+    return false;
 }
 
 // This is the default handler for custom value commands.
@@ -261,12 +264,14 @@ __attribute__((weak)) void via_custom_value_command(uint8_t *data, uint8_t lengt
     }
 #endif // AUDIO_ENABLE
 
-    (void)channel_id; // force use of variable
-
-    // If we haven't returned before here, then let the keyboard level code
-    // handle this, if it is overridden, otherwise by default, this will
-    // return the unhandled state.
-    via_custom_value_command_kb(data, length);
+    // Let the keyboard and user overrides handle it if in the custom channel, and return unhandled if they didn't.
+    if (*channel_id != id_custom_channel || !via_custom_value_command_kb(data, length))
+    {
+        // data = [ command_id, channel_id, value_id, value_data ]
+        uint8_t *command_id = &(data[0]);
+        // Return the unhandled state
+        *command_id = id_unhandled;
+    }
 }
 
 // Keyboard level code can override this, but shouldn't need to.

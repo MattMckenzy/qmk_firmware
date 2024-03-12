@@ -17,12 +17,14 @@
  */
 
 #include "rgb_matrix.h"
+#include "color.h"
 #include "progmem.h"
 #include "eeprom.h"
 #include "eeconfig.h"
 #include "keyboard.h"
 #include "sync_timer.h"
 #include "debug.h"
+#include <stdint.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
@@ -143,17 +145,15 @@ void rgb_matrix_update_pwm_buffers(void) {
     rgb_matrix_driver.flush();
 }
 
-void rgb_matrix_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
-    rgb_matrix_driver.set_color(index, red, green, blue);
+void rgb_matrix_set_hsv(int index, HSV hsv) {
+    rgb_matrix_modifiers_advanced(index, &hsv);
+    RGB rgb = hsv_to_rgb(hsv);
+    rgb_matrix_driver.set_color(index, rgb.r, rgb.g, rgb.b);
 }
 
-void rgb_matrix_set_color_all(uint8_t red, uint8_t green, uint8_t blue) {
-#if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
+void rgb_matrix_set_hsv_all(HSV hsv) {
     for (uint8_t i = 0; i < RGB_MATRIX_LED_COUNT; i++)
-        rgb_matrix_set_color(i, red, green, blue);
-#else
-    rgb_matrix_driver.set_color_all(red, green, blue);
-#endif
+        rgb_matrix_set_hsv(i, hsv);
 }
 
 void process_rgb_matrix(uint8_t row, uint8_t col, bool pressed) {
@@ -210,21 +210,34 @@ void rgb_matrix_test(void) {
     // Mask out bits 4 and 5
     // Increase the factor to make the test animation slower (and reduce to make it faster)
     uint8_t factor = 10;
+    HSV     hsv;
     switch ((g_rgb_timer & (0b11 << factor)) >> factor) {
         case 0: {
-            rgb_matrix_set_color_all(20, 0, 0);
+            hsv.h = 0;
+            hsv.s = 255;
+            hsv.v = 20;
+            rgb_matrix_set_hsv_all(hsv);
             break;
         }
         case 1: {
-            rgb_matrix_set_color_all(0, 20, 0);
+            hsv.h = 85;
+            hsv.s = 255;
+            hsv.v = 20;
+            rgb_matrix_set_hsv_all(hsv);
             break;
         }
         case 2: {
-            rgb_matrix_set_color_all(0, 0, 20);
+            hsv.h = 170;
+            hsv.s = 255;
+            hsv.v = 20;
+            rgb_matrix_set_hsv_all(hsv);
             break;
         }
         case 3: {
-            rgb_matrix_set_color_all(20, 20, 20);
+            hsv.h = 0;
+            hsv.s = 0;
+            hsv.v = 20;
+            rgb_matrix_set_hsv_all(hsv);
             break;
         }
     }
@@ -235,7 +248,8 @@ static bool rgb_matrix_none(effect_params_t *params) {
         return false;
     }
 
-    rgb_matrix_set_color_all(0, 0, 0);
+    HSV hsv;
+    rgb_matrix_set_hsv_all(hsv);
     return false;
 }
 
@@ -283,7 +297,7 @@ static void rgb_task_render(uint8_t effect) {
     rgb_effect_params.init = (effect != rgb_last_effect) || (rgb_matrix_config.enable != rgb_last_enable);
     if (rgb_effect_params.flags != rgb_matrix_config.flags) {
         rgb_effect_params.flags = rgb_matrix_config.flags;
-        rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_hsv_all(NEW_HSV(0, 0, 0));
     }
 
     // each effect can opt to do calculations
@@ -383,6 +397,18 @@ void rgb_matrix_task(void) {
             rgb_task_sync();
             break;
     }
+}
+
+void rgb_matrix_modifiers_advanced(uint8_t led_index, HSV *hsv) {
+    rgb_matrix_modifiers_advanced_kb(led_index, hsv);
+}
+
+__attribute__((weak)) bool rgb_matrix_modifiers_advanced_kb(uint8_t led_index, HSV *hsv) {
+    return rgb_matrix_modifiers_advanced_user(led_index, hsv);
+}
+
+__attribute__((weak)) bool rgb_matrix_modifiers_advanced_user(uint8_t led_index, HSV *hsv) {
+    return true;
 }
 
 void rgb_matrix_indicators(void) {

@@ -12,8 +12,7 @@ bool GRADIENT_LEFT_RIGHT(effect_params_t* params) {
         // The x range will be 0..224, map this to 0..7
         // Relies on hue being 8-bit and wrapping
         hsv.h   = rgb_matrix_config.hsv.h + (scale * g_led_config.point[i].x >> 5);
-        RGB rgb = rgb_matrix_hsv_to_rgb(hsv);
-        rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+        rgb_matrix_set_hsv(i, hsv);
     }
     return rgb_matrix_check_finished_leds(led_max);
 }

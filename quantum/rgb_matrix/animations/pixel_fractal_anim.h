@@ -20,33 +20,33 @@ static bool PIXEL_FRACTAL(effect_params_t* params) {
     }
 
     if (params->init) {
-        rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_hsv_all(NEW_HSV(0, 0, 0));
     }
 
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
     if (g_rgb_timer > wait_timer) {
-        RGB rgb = rgb_matrix_hsv_to_rgb(rgb_matrix_config.hsv);
         for (uint8_t h = 0; h < MATRIX_ROWS; ++h) {
             // Light and copy columns outward
             for (uint8_t l = 0; l < MID_COL - 1; ++l) {
                 if (led[h][l]) {
-                    rgb_matrix_set_color(g_led_config.matrix_co[h][l], rgb.r, rgb.g, rgb.b);
-                    rgb_matrix_set_color(g_led_config.matrix_co[h][MATRIX_COLS - 1 - l], rgb.r, rgb.g, rgb.b);
+
+                    rgb_matrix_set_hsv(g_led_config.matrix_co[h][l], rgb_matrix_config.hsv);
+                    rgb_matrix_set_hsv(g_led_config.matrix_co[h][MATRIX_COLS - 1 - l], rgb_matrix_config.hsv);
                 } else {
-                    rgb_matrix_set_color(g_led_config.matrix_co[h][l], 0, 0, 0);
-                    rgb_matrix_set_color(g_led_config.matrix_co[h][MATRIX_COLS - 1 - l], 0, 0, 0);
+                    rgb_matrix_set_hsv(g_led_config.matrix_co[h][l], NEW_HSV(0, 0, 0));
+                    rgb_matrix_set_hsv(g_led_config.matrix_co[h][MATRIX_COLS - 1 - l], NEW_HSV(0, 0, 0));
                 }
                 led[h][l] = led[h][l + 1];
             }
 
             // Light both middle columns
             if (led[h][MID_COL - 1]) {
-                rgb_matrix_set_color(g_led_config.matrix_co[h][MID_COL - 1], rgb.r, rgb.g, rgb.b);
-                rgb_matrix_set_color(g_led_config.matrix_co[h][MATRIX_COLS - MID_COL], rgb.r, rgb.g, rgb.b);
+                rgb_matrix_set_hsv(g_led_config.matrix_co[h][MID_COL - 1], rgb_matrix_config.hsv);
+                rgb_matrix_set_hsv(g_led_config.matrix_co[h][MATRIX_COLS - MID_COL], rgb_matrix_config.hsv);
             } else {
-                rgb_matrix_set_color(g_led_config.matrix_co[h][MID_COL - 1], 0, 0, 0);
-                rgb_matrix_set_color(g_led_config.matrix_co[h][MATRIX_COLS - MID_COL], 0, 0, 0);
+                rgb_matrix_set_hsv(g_led_config.matrix_co[h][MID_COL - 1], NEW_HSV(0, 0, 0));
+                rgb_matrix_set_hsv(g_led_config.matrix_co[h][MATRIX_COLS - MID_COL], NEW_HSV(0, 0, 0));
             }
 
             // Generate new random fractal column

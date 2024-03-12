@@ -1,0 +1,924 @@
+{
+    "name": "Keychron Q6 ANSI Knob - MattMap",
+    "vendorId": "0x3434",
+    "productId": "0x0161",
+    "keycodes": [
+        "qmk_lighting"
+    ],
+    "menus": [
+        {
+            "label": "Lighting",
+            "content": [
+                {
+                    "label": "Effect",
+                    "content": [
+                        {
+                            "label": "Effect",
+                            "type": "dropdown",
+                            "content": [
+                                "id_qmk_rgb_matrix_effect",
+                                3,
+                                2
+                            ],
+                            "options": [
+                                [
+                                    "00. None",
+                                    0
+                                ],
+                                [
+                                    "01. Solid Color",
+                                    1
+                                ],
+                                [
+                                    "02. Breathing",
+                                    2
+                                ],
+                                [
+                                    "03. Band Spiral Fade",
+                                    3
+                                ],
+                                [
+                                    "04. Rainbow All",
+                                    4
+                                ],
+                                [
+                                    "05. Rainbow Horizontal",
+                                    5
+                                ],
+                                [
+                                    "06. Rainbow Vertical",
+                                    6
+                                ],
+                                [
+                                    "07. Rainbow Chevron",
+                                    7
+                                ],
+                                [
+                                    "08. Rainbow Drain",
+                                    8
+                                ],
+                                [
+                                    "09. Rainbow Dual Drain",
+                                    9
+                                ],
+                                [
+                                    "10. Rainbow Pinwheel",
+                                    10
+                                ],
+                                [
+                                    "11. Rainbow Spiral",
+                                    11
+                                ],
+                                [
+                                    "12. Dual Rainbow Beacon",
+                                    12
+                                ],
+                                [
+                                    "13. Ranbow Beacon",
+                                    13
+                                ],
+                                [
+                                    "14. Flower Blooming",
+                                    14
+                                ],
+                                [
+                                    "15. Jellybean Raindrops",
+                                    15
+                                ],
+                                [
+                                    "16. Pixel Rain",
+                                    16
+                                ],
+                                [
+                                    "17. Typing Heatmap",
+                                    17
+                                ],
+                                [
+                                    "18. Digital Rain",
+                                    18
+                                ],
+                                [
+                                    "19. Reactive Simple",
+                                    19
+                                ],
+                                [
+                                    "20. Reactive Multi-Wide",
+                                    20
+                                ],
+                                [
+                                    "21. Reactive Multi-Nexus",
+                                    21
+                                ],
+                                [
+                                    "22. Rainbow Splash",
+                                    22
+                                ],
+                                [
+                                    "23. Solid Splash",
+                                    23
+                                ],
+                                [
+                                    "24. Solid Multi-Splash",
+                                    24
+                                ],
+                                [
+                                    "25. Starlight Dual Hue",
+                                    25
+                                ],
+                                [
+                                    "26. Riverflow",
+                                    26
+                                ]
+                            ]
+                        },
+                        {
+                            "label": "Color",
+                            "type": "color",
+                            "content": [
+                                "id_qmk_rgb_matrix_color",
+                                3,
+                                4
+                            ]
+                        },
+                        {
+                            "label": "Brightness",
+                            "type": "range",
+                            "content": [
+                                "id_qmk_rgb_matrix_brightness",
+                                3,
+                                1
+                            ],
+                            "options": [
+                                0,
+                                255
+                            ]
+                        },
+                        {
+                            "label": "Effect Speed",
+                            "type": "range",
+                            "content": [
+                                "id_qmk_rgb_matrix_effect_speed",
+                                3,
+                                3
+                            ],
+                            "options": [
+                                0,
+                                255
+                            ]
+                        },
+                        {
+                            "label": "Enable Effect Peek",
+                            "type": "toggle",
+                            "content": [
+                                "id_rgb_peek",
+                                0,
+                                12
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Indicators",
+                    "content": [
+                        {
+                            "label": "Enable Caps Lock Indicator",
+                            "type": "toggle",
+                            "content": [
+                                "id_caps_lock_indicator",
+                                0,
+                                1
+                            ]
+                        },
+                        {
+                            "label": "Enable Num Lock Indicator",
+                            "type": "toggle",
+                            "content": [
+                                "id_num_lock_indicator",
+                                0,
+                                2
+                            ]
+                        },
+                        {
+                            "label": "Enable Scroll Lock Indicator",
+                            "type": "toggle",
+                            "content": [
+                                "id_scroll_lock_indicator",
+                                0,
+                                3
+                            ]
+                        },
+                        {
+                            "label": "Enable Setting Indicators",
+                            "type": "toggle",
+                            "content": [
+                                "id_setting_indicators",
+                                0,
+                                4
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Layers",
+                    "content": [
+                        {
+                            "label": "Enable Layer Mask",
+                            "type": "toggle",
+                            "content": [
+                                "id_layer_mask",
+                                0,
+                                5
+                            ]
+                        },
+                        {
+                            "label": "Always Bright Layer Mask",
+                            "type": "toggle",
+                            "content": [
+                                "id_bright_layer_mask",
+                                0,
+                                6
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Gradient",
+                    "content": [
+                        {
+                            "label": "Enable Gradient",
+                            "type": "toggle",
+                            "content": [
+                                "id_gradient",
+                                0,
+                                7
+                            ]
+                        },
+                        {
+                            "label": "Gradient Intensity",
+                            "type": "range",
+                            "options": [
+                                1,
+                                10
+                            ],
+                            "content": [
+                                "id_gradient_intensity",
+                                0,
+                                8
+                            ]
+                        },
+                        {
+                            "label": "Gradient Brightness Direction",
+                            "type": "dropdown",
+                            "options": [
+                                "Up",
+                                "Right",
+                                "Down",
+                                "Left"
+                            ],
+                            "content": [
+                                "id_gradient_direction",
+                                0,
+                                9
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Ripples",
+                    "content": [
+                        {
+                            "label": "Enable Ripples",
+                            "type": "toggle",
+                            "content": [
+                                "id_ripples",
+                                0,
+                                10
+                            ]
+                        },
+                        {
+                            "label": "Ripple Intensity",
+                            "type": "range",
+                            "options": [
+                                1,
+                                10
+                            ],
+                            "content": [
+                                "id_ripple_intensity",
+                                0,
+                                11
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "matrix": {
+        "rows": 6,
+        "cols": 20
+    },
+    "customKeycodes": [
+        {
+            "name": "Left Option",
+            "title": "Left Option in macOS",
+            "shortName": "LOpt"
+        },
+        {
+            "name": "Right Option",
+            "title": "Right Option in macOS",
+            "shortName": "ROpt"
+        },
+        {
+            "name": "Left Cmd",
+            "title": "Left Command in macOS",
+            "shortName": "LCmd"
+        },
+        {
+            "name": "Right Cmd",
+            "title": "Right Command in macOS",
+            "shortName": "RCmd"
+        },
+        {
+            "name": "Siri",
+            "title": "Siri in macOS",
+            "shortName": "Siri"
+        },
+        {
+            "name": "Task View",
+            "title": "Task View in windows",
+            "shortName": "Task"
+        },
+        {
+            "name": "File Explorer",
+            "title": "File Explorer in windows",
+            "shortName": "File"
+        },
+        {
+            "name": "Screen Shot",
+            "title": "Screenshot in macOS",
+            "shortName": "SShot"
+        },
+        {
+            "name": "Cortana",
+            "title": "Cortana in windows",
+            "shortName": "Cortana"
+        },
+        {
+            "name": "CAPS Indicator",
+            "title": "Toggles Caps Lock Indicator Setting",
+            "shortName": "SCLI"
+        },
+        {
+            "name": "NLCK Indicator",
+            "title": "Toggles Num Lock Indicator Setting",
+            "shortName": "SNLI"
+        },
+        {
+            "name": "SLCK Indicator",
+            "title": "Toggles Scroll Lock Indicator Setting",
+            "shortName": "SSLI"
+        },
+        {
+            "name": "Setting Indicators",
+            "title": "Toggles Setting Indicators Setting",
+            "shortName": "SSI"
+        },
+        {
+            "name": "Layer Mask",
+            "title": "Toggles Layer Mask Setting",
+            "shortName": "SLM"
+        },
+        {
+            "name": "Bright Layer Mask",
+            "title": "Toggles Always Bright Layer Mask Setting",
+            "shortName": "SBLM"
+        },
+        {
+            "name": "RGB Gradient",
+            "title": "Toggles RGB Gradient Setting",
+            "shortName": "SGrad"
+        },
+        {
+            "name": "Reactive Ripples",
+            "title": "Toggles Reactive Ripples Setting",
+            "shortName": "SRip"
+        },
+        {
+            "name": "RGB Peek",
+            "title": "Toggles RGB Peek Setting",
+            "shortName": "SPeek"
+        },
+        {
+            "name": "Gradient Up",
+            "title": "Gradient Direction Brighter Up",
+            "shortName": "GradU"
+        },
+        {
+            "name": "Gradient Right",
+            "title": "Gradient Direction Brighter Right",
+            "shortName": "GradR"
+        },
+        {
+            "name": "Gradient Down",
+            "title": "Gradient Direction Brighter Down",
+            "shortName": "GradD"
+        },
+        {
+            "name": "Gradient Left",
+            "title": "Gradient Direction Brighter Left",
+            "shortName": "GradL"
+        },
+        {
+            "name": "Gradient 1",
+            "title": "Gradient Intensity 1",
+            "shortName": "Grad1"
+        },
+        {
+            "name": "Gradient 2",
+            "title": "Gradient Intensity 2",
+            "shortName": "Grad2"
+        },
+        {
+            "name": "Gradient 3",
+            "title": "Gradient Intensity 3",
+            "shortName": "Grad3"
+        },
+        {
+            "name": "Gradient 4",
+            "title": "Gradient Intensity 4",
+            "shortName": "Grad4"
+        },
+        {
+            "name": "Gradient 5",
+            "title": "Gradient Intensity 5",
+            "shortName": "Grad5"
+        },
+        {
+            "name": "Gradient 6",
+            "title": "Gradient Intensity 6",
+            "shortName": "Grad6"
+        },
+        {
+            "name": "Gradient 7",
+            "title": "Gradient Intensity 7",
+            "shortName": "Grad7"
+        },
+        {
+            "name": "Gradient 8",
+            "title": "Gradient Intensity 8",
+            "shortName": "Grad8"
+        },
+        {
+            "name": "Gradient 9",
+            "title": "Gradient Intensity 9",
+            "shortName": "Grad9"
+        },
+        {
+            "name": "Gradient 10",
+            "title": "Gradient Intensity 10",
+            "shortName": "Grad10"
+        },
+        {
+            "name": "Ripple 1",
+            "title": "Ripple Intensity 1",
+            "shortName": "Rip1"
+        },
+        {
+            "name": "Ripple 2",
+            "title": "Ripple Intensity 2",
+            "shortName": "Rip2"
+        },
+        {
+            "name": "Ripple 3",
+            "title": "Ripple Intensity 3",
+            "shortName": "Rip3"
+        },
+        {
+            "name": "Ripple 4",
+            "title": "Ripple Intensity 4",
+            "shortName": "Rip4"
+        },
+        {
+            "name": "Ripple 5",
+            "title": "Ripple Intensity 5",
+            "shortName": "Rip5"
+        },
+        {
+            "name": "Ripple 6",
+            "title": "Ripple Intensity 6",
+            "shortName": "Rip6"
+        },
+        {
+            "name": "Ripple 7",
+            "title": "Ripple Intensity 7",
+            "shortName": "Rip7"
+        },
+        {
+            "name": "Ripple 8",
+            "title": "Ripple Intensity 8",
+            "shortName": "Rip8"
+        },
+        {
+            "name": "Ripple 9",
+            "title": "Ripple Intensity 9",
+            "shortName": "Rip9"
+        },
+        {
+            "name": "Ripple 10",
+            "title": "Ripple Intensity 10",
+            "shortName": "Rip10"
+        },
+        {
+            "name": "RGB Solid",
+            "title": "RGB Effect - Solid Color",
+            "shortName": "Solid"
+        },
+        {
+            "name": "RGB Breathing",
+            "title": "RGB Effect - Breathing",
+            "shortName": "Breath"
+        },
+        {
+            "name": "RGB Band Spiral",
+            "title": "RGB Effect - Band Spiral Fade",
+            "shortName": "BndSF"
+        },
+        {
+            "name": "RGB Rainbow All",
+            "title": "RGB Effect - Rainbow All",
+            "shortName": "RbAll"
+        },
+        {
+            "name": "RGB Rainbow Horizontal",
+            "title": "RGB Effect - Rainbow Horizontal",
+            "shortName": "RbHor"
+        },
+        {
+            "name": "RGB Rainbow Vertical",
+            "title": "RGB Effect - Rainbow Vertical",
+            "shortName": "RbVert"
+        },
+        {
+            "name": "RGB Rainbow Chevron",
+            "title": "RGB Effect - Rainbow Chevron",
+            "shortName": "RbChv"
+        },
+        {
+            "name": "RGB Rainbow Drain",
+            "title": "RGB Effect - Rainbow Drain",
+            "shortName": "RbDrn"
+        },
+        {
+            "name": "RGB Rainbow Dual Drain",
+            "title": "RGB Effect - Rainbow Dual Drain",
+            "shortName": "Rb2Drn"
+        },
+        {
+            "name": "RGB Rainbow Pinwheel",
+            "title": "RGB Effect - Rainbow Pinwheel",
+            "shortName": "RbPin"
+        },
+        {
+            "name": "RGB Rainbow Spiral",
+            "title": "RGB Effect - Rainbow Spiral",
+            "shortName": "RbSpi"
+        },
+        {
+            "name": "RGB Dual Rainbow Beacon",
+            "title": "RGB Effect - Dual Rainbow Beacon",
+            "shortName": "Rb2Bea"
+        },
+        {
+            "name": "RGB Ranbow Beacon",
+            "title": "RGB Effect - Ranbow Beacon",
+            "shortName": "RbBea"
+        },
+        {
+            "name": "RGB Flower Blooming",
+            "title": "RGB Effect - Flower Blooming",
+            "shortName": "Flower"
+        },
+        {
+            "name": "RGB Jellybean Raindrops",
+            "title": "RGB Effect - Jellybean Raindrops",
+            "shortName": "Jelly"
+        },
+        {
+            "name": "RGB Pixel Rain",
+            "title": "RGB Effect - Pixel Rain",
+            "shortName": "PRain"
+        },
+        {
+            "name": "RGB Typing Heatmap",
+            "title": "RGB Effect - Typing Heatmap",
+            "shortName": "Heat"
+        },
+        {
+            "name": "RGB Digital Rain",
+            "title": "RGB Effect - Digital Rain",
+            "shortName": "DRain"
+        },
+        {
+            "name": "RGB Reactive Simple",
+            "title": "RGB Effect - Reactive Simple",
+            "shortName": "RxWid"
+        },
+        {
+            "name": "RGB Reactive Multi-Wide",
+            "title": "RGB Effect - Reactive Multi-Wide",
+            "shortName": "RxNex"
+        },
+        {
+            "name": "RGB Rainbow Splash",
+            "title": "RGB Effect - Rainbow Splash",
+            "shortName": "Splsh"
+        },
+        {
+            "name": "RGB Solid Splash",
+            "title": "RGB Effect - Solid Splash",
+            "shortName": "SolSp"
+        },
+        {
+            "name": "RGB Solid Multi-Splash",
+            "title": "RGB Effect - Solid Multi-Splash",
+            "shortName": "SolMS"
+        },
+        {
+            "name": "RGB Starlight Dual Hue",
+            "title": "RGB Effect - Starlight Dual Hue",
+            "shortName": "StarD"
+        },
+        {
+            "name": "RGB Riverflow",
+            "title": "RGB Effect - Riverflow",
+            "shortName": "River"
+        }
+    ],
+    "layouts": {
+        "keymap": [
+            [
+                {
+                    "c": "#777777"
+                },
+                "0,0\nESC",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "0,1",
+                "0,2",
+                "0,3",
+                "0,4",
+                {
+                    "x": 0.25,
+                    "c": "#aaaaaa"
+                },
+                "0,5",
+                "0,6",
+                "0,7",
+                "0,8",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "0,9",
+                "0,10",
+                "0,11",
+                "0,12",
+                {
+                    "x": 0.25,
+                    "c": "#aaaaaa"
+                },
+                "4,19\n\n\n\n\n\n\n\n\ne0",
+                {
+                    "x": 0.25,
+                    "c": "#aaaaaa"
+                },
+                "0,14",
+                "0,15",
+                "0,16",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "0,19",
+                "1,19",
+                "2,19",
+                "3,19"
+            ],
+            [
+                {
+                    "y": 0.25
+                },
+                {
+                    "c": "#aaaaaa"
+                },
+                "1,0",
+                {
+                    "c": "#cccccc"
+                },
+                "1,1",
+                "1,2",
+                "1,3",
+                "1,4",
+                "1,5",
+                "1,6",
+                "1,7",
+                "1,8",
+                "1,9",
+                "1,10",
+                "1,11",
+                "1,12",
+                {
+                    "c": "#aaaaaa",
+                    "w": 2
+                },
+                "1,13",
+                {
+                    "x": 0.25
+                },
+                "1,14",
+                "1,15",
+                "1,16",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "1,17",
+                "1,18",
+                "0,17",
+                "0,18"
+            ],
+            [
+                {
+                    "c": "#aaaaaa",
+                    "w": 1.5
+                },
+                "2,0",
+                {
+                    "c": "#cccccc"
+                },
+                "2,1",
+                "2,2",
+                "2,3",
+                "2,4",
+                "2,5",
+                "2,6",
+                "2,7",
+                "2,8",
+                "2,9",
+                "2,10",
+                "2,11",
+                "2,12",
+                {
+                    "w": 1.5,
+                    "c": "#aaaaaa"
+                },
+                "2,13",
+                {
+                    "x": 0.25,
+                    "c": "#aaaaaa"
+                },
+                "2,14",
+                "2,15",
+                "2,16",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "2,17",
+                "2,18",
+                "3,14",
+                {
+                    "h": 2
+                },
+                "3,15"
+            ],
+            [
+                {
+                    "c": "#aaaaaa",
+                    "w": 1.75
+                },
+                "3,0",
+                {
+                    "c": "#cccccc"
+                },
+                "3,1",
+                "3,2",
+                "3,3",
+                "3,4",
+                "3,5",
+                "3,6",
+                "3,7",
+                "3,8",
+                "3,9",
+                "3,10",
+                "3,11",
+                {
+                    "c": "#777777",
+                    "w": 2.25
+                },
+                "3,13",
+                {
+                    "x": 3.5,
+                    "c": "#cccccc"
+                },
+                "3,17",
+                "3,18",
+                "3,16"
+            ],
+            [
+                {
+                    "c": "#aaaaaa",
+                    "w": 2.25
+                },
+                "4,0",
+                {
+                    "c": "#cccccc"
+                },
+                "4,2",
+                "4,3",
+                "4,4",
+                "4,5",
+                "4,6",
+                "4,7",
+                "4,8",
+                "4,9",
+                "4,10",
+                "4,11",
+                {
+                    "c": "#aaaaaa",
+                    "w": 2.75
+                },
+                "4,13",
+                {
+                    "x": 1.25,
+                    "c": "#cccccc"
+                },
+                "4,15",
+                {
+                    "x": 1.25,
+                    "c": "#cccccc"
+                },
+                "4,17",
+                "4,18",
+                "4,14",
+                {
+                    "h": 2
+                },
+                "4,16"
+            ],
+            [
+                {
+                    "c": "#aaaaaa",
+                    "w": 1.25
+                },
+                "5,0",
+                {
+                    "w": 1.25
+                },
+                "5,1",
+                {
+                    "w": 1.25
+                },
+                "5,2",
+                {
+                    "c": "#cccccc",
+                    "w": 6.25
+                },
+                "5,6",
+                {
+                    "c": "#aaaaaa",
+                    "w": 1.25
+                },
+                "5,10",
+                {
+                    "w": 1.25
+                },
+                "5,11",
+                {
+                    "w": 1.25
+                },
+                "5,12",
+                {
+                    "w": 1.25
+                },
+                "5,13",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc"
+                },
+                "5,14",
+                "5,15",
+                "5,16",
+                {
+                    "x": 0.25,
+                    "c": "#cccccc",
+                    "w": 2
+                },
+                "5,17",
+                "5,18"
+            ]
+        ]
+    }
+}

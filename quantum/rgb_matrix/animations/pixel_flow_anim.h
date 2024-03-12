@@ -20,7 +20,7 @@ static bool PIXEL_FLOW(effect_params_t* params) {
 
     if (params->init) {
         // Clear LEDs and fill the state array
-        rgb_matrix_set_color_all(0, 0, 0);
+        rgb_matrix_set_hsv_all(NEW_HSV(0, 0, 0));
         for (uint8_t j = 0; j < RGB_MATRIX_LED_COUNT; ++j) {
             led[j] = (random8() & 2) ? (RGB){0, 0, 0} : hsv_to_rgb((HSV){random8(), random8_min_max(127, 255), rgb_matrix_config.hsv.v});
         }

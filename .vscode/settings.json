@@ -6,10 +6,22 @@
     "files.exclude": {
         "**/.build": true,
         "**/*.hex": true,
-        "**/*.bin": true,
-        "**/*.uf2": true
+        "**/*.uf2": true,
+        "keyboards/[!k]*": true,
+        "keyboards/k[!e]*": true,
+        "keyboards/ke[!y]*": true,
+        "keyboards/key[!c]*": true,
+        "keyboards/keyc[!h]*": true,
+        "keyboards/keychron/[!cq]*": true,
+        "keyboards/keychron/{c,q}[!o6]*": true,
+        "keyboards/keychron/q65": true,
+        "keyboards/keychron/q60": true,
+        "keyboards/keychron/q6/ansi": true,
+        "keyboards/keychron/q6/iso": true,
+        "keyboards/keychron/q6/iso_encoder": true
     },
     "files.associations": {
+        "*.cs": "csharp",
         "*.h": "c",
         "*.c": "c",
         "*.inc": "c",
@@ -18,7 +30,16 @@
         "xstddef": "c",
         "type_traits": "c",
         "utility": "c",
-        "ranges": "c"
+        "ranges": "c",
+        "compare": "c",
+        "cstdint": "c",
+        "bitset": "c",
+        "format": "c",
+        "algorithm": "c",
+        "*.ipp": "c",
+        "chrono": "c",
+        "typeindex": "c",
+        "typeinfo": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,

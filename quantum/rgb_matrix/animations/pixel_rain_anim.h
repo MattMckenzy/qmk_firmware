@@ -17,8 +17,7 @@ static bool PIXEL_RAIN(effect_params_t* params) {
             return;
         }
         HSV hsv = (random8() & 2) ? (HSV){0, 0, 0} : (HSV){random8(), random8_min_max(127, 255), rgb_matrix_config.hsv.v};
-        RGB rgb = rgb_matrix_hsv_to_rgb(hsv);
-        rgb_matrix_set_color(led_index, rgb.r, rgb.g, rgb.b);
+        rgb_matrix_set_hsv(led_index, hsv);
         wait_timer = g_rgb_timer + interval();
     }
 

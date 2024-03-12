@@ -106,9 +106,9 @@ struct rgb_matrix_limits_t rgb_matrix_get_limits(uint8_t iter);
 
 #define RGB_MATRIX_USE_LIMITS(min, max) RGB_MATRIX_USE_LIMITS_ITER(min, max, params->iter)
 
-#define RGB_MATRIX_INDICATOR_SET_COLOR(i, r, g, b) \
-    if (i >= led_min && i < led_max) {             \
-        rgb_matrix_set_color(i, r, g, b);          \
+#define RGB_MATRIX_INDICATOR_SET_COLOR(i, hsv) \
+    if (i >= led_min && i < led_max) {         \
+        rgb_matrix_set_hsv(i, hsv);            \
     }
 
 #define RGB_MATRIX_TEST_LED_FLAGS() \
@@ -145,12 +145,17 @@ void eeconfig_update_rgb_matrix(void);
 uint8_t rgb_matrix_map_row_column_to_led_kb(uint8_t row, uint8_t column, uint8_t *led_i);
 uint8_t rgb_matrix_map_row_column_to_led(uint8_t row, uint8_t column, uint8_t *led_i);
 
-void rgb_matrix_set_color(int index, uint8_t red, uint8_t green, uint8_t blue);
-void rgb_matrix_set_color_all(uint8_t red, uint8_t green, uint8_t blue);
+void rgb_matrix_set_hsv(int index, HSV hsv);
+void rgb_matrix_set_hsv_all(HSV hsv);
 
 void process_rgb_matrix(uint8_t row, uint8_t col, bool pressed);
 
 void rgb_matrix_task(void);
+
+// This can be called during RGB effect calculations right before setting colors to permit the keymap to make last instant modifications to HSV based on led index.
+void rgb_matrix_modifiers_advanced(uint8_t led_index, HSV* hsv);
+bool rgb_matrix_modifiers_advanced_kb(uint8_t led_index, HSV* hsv);
+bool rgb_matrix_modifiers_advanced_user(uint8_t led_index, HSV* hsv);
 
 // This runs after another backlight effect and replaces
 // colors already set
